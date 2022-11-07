@@ -40,7 +40,6 @@ gem "redis", "~> 4.0"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 
-gem 'dotenv-rails'
 # モデルに現在のDB構造をメモする機能
 gem 'annotate'
 # エラーメッセージとログの見方
@@ -79,7 +78,7 @@ group :development, :test do
   gem 'rubocop-rails'
 
   # dotenv
-  # gem 'dotenv-rails'
+  gem 'dotenv-rails'
   
   # factory_bot
   gem 'factory_bot_rails'
