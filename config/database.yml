@@ -54,9 +54,9 @@ test:
 #   username: <%= ENV['DB_USERNAME'] %>
 #   # password: <%= ENV["PORTFOLIO01_APP_DATABASE_PASSWORD"] %>
 #   password: <%= ENV['DB_PASSWORD'] %>
+
 # EC2用
 production:
-  <<: *default
   database: portfolio01_app_production
   adapter: mysql2
   encoding: utf8mb4
@@ -65,6 +65,7 @@ production:
   username: <%= Rails.application.credentials.db[:user_name] %>
   password: <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:endpoint] %>
+  socket: <%= Rails.application.credentials.db[:socket] %>
   pool: 20
   timeout: 1000
 
