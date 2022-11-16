@@ -24,8 +24,9 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
-!/tmp/sockets/puma.sock
 /public/assets
+# sockesのgit管理不要
+/tmp/sockets/puma.sock
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
