@@ -48,10 +48,24 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: portfolio01_app_production
+#   username: <%= ENV['DB_USERNAME'] %>
+#   # password: <%= ENV["PORTFOLIO01_APP_DATABASE_PASSWORD"] %>
+#   password: <%= ENV['DB_PASSWORD'] %>
+
+# EC2用
 production:
-  <<: *default
   database: portfolio01_app_production
-  username: <%= ENV['DB_USERNAME'] %>
-  # password: <%= ENV["PORTFOLIO01_APP_DATABASE_PASSWORD"] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  username: <%= Rails.application.credentials.db[:user_name] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:endpoint] %>
+  socket: <%= Rails.application.credentials.db[:socket] %>
+  pool: 20
+  timeout: 1000
 
