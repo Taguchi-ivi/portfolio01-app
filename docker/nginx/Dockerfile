@@ -1,0 +1,11 @@
+FROM nginx:1.23.2
+
+# デフォルトで用意されている個別設定ファイルを削除
+RUN rm -f /etc/nginx/conf.d/*
+
+# ADD nginx.conf /etc/nginx/conf.d/portfolio01-app.conf
+COPY ./docker/nginx/nginx.conf /etc/nginx/ningx.conf
+
+# ビルド完了後にnginxを起動
+CMD /usr/sbin/nginx -g 'demon off;' -c /etc/nginx/nginx.conf
+
