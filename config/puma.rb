@@ -25,8 +25,8 @@ worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 #     # bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 # end
 
+# switch deploy
 port ENV.fetch("PORT") { 3000 }
-# fix
 # bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 
 

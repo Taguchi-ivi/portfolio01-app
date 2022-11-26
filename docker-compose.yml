@@ -4,20 +4,25 @@ services:
         build: 
             context: .
             dockerfile: ./docker/web/Dockerfile
-        command: bundle exec puma -C config/puma.rb -e production
+        
+        # switch deploy
+        command: bundle exec puma -C config/puma.rb
+        # command: bundle exec puma -C config/puma.rb -e production
         volumes: 
             - .:/portfolio01-app
             - public:/portfolio01-app/public
             - tmp:/portfolio01-app/tmp
         ports: 
             - '3000:3000'
-        depends_on: 
-            - db
         stdin_open: true
         tty: true
         networks: 
             - portfolio01-app-network
-        
+        # switch deploy
+        depends_on: 
+            - db
+    
+    # switch deploy
     db:
         image: mysql:8.0.31
         environment: 
@@ -48,8 +53,7 @@ services:
             - portfolio01-app-network
 
 volumes: 
-    # mysql-data:
-    #     driver: local
+    # switch deploy
     mysql-data:
     tmp:
     public:

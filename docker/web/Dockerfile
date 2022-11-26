@@ -16,6 +16,9 @@ RUN bundle install
 
 COPY . $APP_ROOT
 
+RUN mkdir -p tmp/sockets
+RUN mkdir -p tmp/pids
+
 # add a script to be executed every time the container starts.
 COPY ./docker/web/entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

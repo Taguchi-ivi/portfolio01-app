@@ -7,5 +7,5 @@ RUN rm -f /etc/nginx/conf.d/*
 COPY ./docker/nginx/nginx.conf /etc/nginx/ningx.conf
 
 # ビルド完了後にnginxを起動
-CMD /usr/sbin/nginx -g 'demon off;' -c /etc/nginx/nginx.conf
+CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
 
