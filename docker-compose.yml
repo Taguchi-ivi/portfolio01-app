@@ -1,27 +1,33 @@
 version: '3'
+
 services:
     web:
         build: 
             context: .
             dockerfile: ./docker/web/Dockerfile
-        
         # switch deploy
-        command: bundle exec puma -C config/puma.rb
+        # command: bundle exec puma -C config/puma.rb
         # command: bundle exec puma -C config/puma.rb -e production
         volumes: 
             - .:/portfolio01-app
             - public:/portfolio01-app/public
             - tmp:/portfolio01-app/tmp
-        ports: 
-            - '3000:3000'
+        # ports: 
+        #     - '3000:3000'
         stdin_open: true
         tty: true
-        networks: 
-            - portfolio01-app-network
+        environment: 
+            DB_ROOT_USERNAME: root
+            DB_USERNAME: user
+            DB_PASSWORD: password
+            TZ: Asia/Tokyo
+            DB_HOST: db
         # switch deploy
         depends_on: 
             - db
-    
+        # networks: 
+        #     - portfolio01-app-network
+        
     # switch deploy
     db:
         image: mysql:8.0.31
@@ -30,6 +36,7 @@ services:
             - MYSQL_USER=user
             - MYSQL_PASSWORD=password
             - MYSQL_ROOT_PASSWORD=pass
+            - TZ=Asia/Tokyo
         ports: 
             - '3306:3306'
         command: --default-authentication-plugin=mysql_native_password
@@ -49,8 +56,8 @@ services:
             - "80:80"
         depends_on: 
             - web
-        networks: 
-            - portfolio01-app-network
+        # networks: 
+        #     - portfolio01-app-network
 
 volumes: 
     # switch deploy
@@ -58,7 +65,7 @@ volumes:
     tmp:
     public:
     
-networks: 
-    portfolio01-app-network:
-        external: true
+# networks: 
+#     portfolio01-app-network:
+#         external: true
 
