@@ -4,7 +4,8 @@ services:
     web:
         build: 
             context: .
-            dockerfile: ./docker/web/Dockerfile
+            dockerfile: ./docker/web/Dockerfile.prod
+        command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails server"
         volumes: 
             - .:/portfolio01-app
             - public:/portfolio01-app/public
@@ -16,24 +17,7 @@ services:
             DB_USERNAME: user
             DB_PASSWORD: password
             TZ: Asia/Tokyo
-            DB_HOST: db
-        depends_on: 
-            - db
-        
-    db:
-        image: mysql:8.0.31
-        environment: 
-            - MYSQL_DATABASE=portfolio01_app_development
-            - MYSQL_USER=user
-            - MYSQL_PASSWORD=password
-            - MYSQL_ROOT_PASSWORD=pass
-            - TZ=Asia/Tokyo
-        ports: 
-            - '3306:3306'
-        command: --default-authentication-plugin=mysql_native_password
-        volumes: 
-            - mysql-data:/var/lib/mysql
-        
+            # DB_HOST: db
     nginx:
         build:
             context: .
@@ -46,8 +30,9 @@ services:
             - "80:80"
         depends_on: 
             - web
-        
+
 volumes:
-    mysql-data:
     tmp:
     public:
+    
+

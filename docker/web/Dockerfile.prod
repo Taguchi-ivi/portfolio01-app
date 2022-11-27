@@ -28,5 +28,5 @@ RUN mkdir -p tmp/pids
 # EXPOSE 3000
 
 # 起動の度にデフォルトでrails sする(entrypoint.sh)に持たせても良い
-CMD ["sh", "./docker/web/start-server.sh"]
+CMD ["bundle", "exec", "rails", "s", "-e", "production"]
 
