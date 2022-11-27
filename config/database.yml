@@ -15,7 +15,9 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  socket: /tmp/mysql.sock
+  # socket: /tmp/mysql.sock
+  host: db # コンテナ名(db)で名前解決
+
 
 development:
   <<: *default
@@ -65,7 +67,7 @@ production:
   username: <%= Rails.application.credentials.db[:user_name] %>
   password: <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:endpoint] %>
-  socket: <%= Rails.application.credentials.db[:socket] %>
   pool: 20
   timeout: 1000
+  # socket: <%= Rails.application.credentials.db[:socket] %>
 

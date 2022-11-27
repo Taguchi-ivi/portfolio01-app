@@ -25,12 +25,19 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 /public/assets
+.byebug_history
 # sockesのgit管理不要
 /tmp/sockets/puma.sock
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
 
 # add
 .env

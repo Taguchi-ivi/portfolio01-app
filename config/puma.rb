@@ -15,14 +15,19 @@ worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-if Rails.env.development? || Rails.env.test?
-    port ENV.fetch("PORT") { 3000 }
-else
-    # add ec2 puma用
-    bind "unix:///var/www/portfolio01-app/tmp/sockets/puma.sock"
-    # puma用
-    # bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
-end
+# if Rails.env.development? || Rails.env.test?
+#     # port ENV.fetch("PORT") { 3000 }
+#     bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
+# else
+#     # add ec2 puma用
+#     bind "unix:///var/www/portfolio01-app/tmp/sockets/puma.sock"
+#     # puma用
+#     # bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
+# end
+
+# switch deploy docker-compose時はテスト本番どちらもport3000はコメントアウト
+# port ENV.fetch("PORT") { 3000 }
+bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 
 # Specifies the `environment` that Puma will run in.
 #
