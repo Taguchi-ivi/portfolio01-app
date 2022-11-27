@@ -25,7 +25,7 @@ worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 #     # bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 # end
 
-# switch deploy
+# switch deploy docker-compose時はテスト本番どちらもport3000はコメントアウト
 # port ENV.fetch("PORT") { 3000 }
 bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 
