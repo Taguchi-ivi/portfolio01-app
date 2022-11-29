@@ -1,24 +1,15 @@
-# README
+# ポートフォリオサイトになります。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##  環境
+Ruby 3.1.2
+Rails 7.0.3.1
+Docker 20.10.21
 
-Things you may want to cover:
 
-* Ruby version
+## 経緯
+ポートフォリオサイトを作成するにあたり、23日間頑張ったが
+さらなるモダンなポートフォリオを作成したいと思い、別のリポジトリへ移動を検討
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+こちらのレジストリでは以下まで実装しておりました。
+- viewは最小限として「hello world」の状態としてインフラから作成
+- EC２ & RDSの環境にてdocker-composeで本番環境を構築
